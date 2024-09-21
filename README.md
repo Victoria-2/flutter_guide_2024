@@ -13,3 +13,7 @@ Proyecto guía que muestra el uso de los diferentes Widgets de Flutter.
 
 ## Catalogo de Widgets
 [Widget catalog](https://docs.flutter.dev/ui/widgets/)
+
+
+## Screenshots
+![Demo Home](assets/images/demo.jpg)
