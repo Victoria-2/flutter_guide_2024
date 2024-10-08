@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide_2024/screens/design_screen.dart';
-import 'package:flutter_guide_2024/screens/home_screen.dart';
+import 'package:flutter_guide_2024/screens/material_screen.dart';
+import 'package:flutter_guide_2024/screens/screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +11,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-      /* home: DesignScreen(), */
-    );
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: 'list_card',
+        routes: {
+          'home': (context) => const HomeScreen(),
+          'design': (context) => const DesignScreen(),
+          'listview_builder': (context) => const ListViewBuilderScreen(),
+          'listview_separated': (context) => const ListViewSeparatedScreen(),
+          'list_card': (context) => const ListCardScreen(),
+          'material_library': (context) => const MaterialScreen(),
+          'counter': (context) => const CounterScreen(),
+        }
+        /* home: DesignScreen(), */
+        );
   }
 }
