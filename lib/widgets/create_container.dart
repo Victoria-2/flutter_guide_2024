@@ -6,9 +6,7 @@ class CreateContainer extends StatelessWidget {
 
   EdgeInsets? margin;
   EdgeInsets? padding;
-
   Color? cajaColor;
-
   Widget? child;
 
   CreateContainer(

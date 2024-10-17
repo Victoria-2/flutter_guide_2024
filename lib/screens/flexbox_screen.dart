@@ -26,10 +26,13 @@ class FlexboxScreen extends StatelessWidget {
       body: Container(
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.all(5),
+        width: 300,
         decoration: BoxDecoration(
             border:
                 Border.all(width: 2, color: const Color.fromARGB(65, 0, 0, 0))),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             for (int i = 0; i < 3; i++)
               CreateContainer(
