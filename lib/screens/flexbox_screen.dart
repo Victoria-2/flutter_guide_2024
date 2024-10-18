@@ -8,7 +8,7 @@ class FlexboxScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flexbox'),
+        title: const Text('Flexbox'),
         centerTitle: true,
         actions: [
           GestureDetector(
@@ -24,12 +24,16 @@ class FlexboxScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
+        height: 400,
+        //width: 500,
         decoration: BoxDecoration(
             border:
                 Border.all(width: 2, color: const Color.fromARGB(65, 0, 0, 0))),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             for (int i = 0; i < 3; i++)
               CreateContainer(

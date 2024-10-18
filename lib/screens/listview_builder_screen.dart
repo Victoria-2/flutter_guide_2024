@@ -9,11 +9,11 @@ class ListViewBuilderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ListView Builder Screen'),
+        title: const Text('ListView Builder Screen'),
       ),
       body: Center(
         child: ListView.builder(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           itemCount: 100,
           itemBuilder: (BuildContext context, int index) {
             log('posicion $index');
