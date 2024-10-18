@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'flexbox',
+        initialRoute: 'swipper_card',
         routes: {
           'home': (context) => const HomeScreen(),
           'design': (context) => const DesignScreen(),
@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
           'material_library': (context) => const MaterialScreen(),
           'counter': (context) => const CounterScreen(),
           'flexbox': (context) => const FlexboxScreen(),
+          'swipper_card': (context) => const SwipperScreen(),
+          'stack': (context) => const StackScreen(),
         }
         /* home: DesignScreen(), */
         );
