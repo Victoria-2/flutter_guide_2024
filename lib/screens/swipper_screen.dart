@@ -104,7 +104,7 @@ class CardHorizontalSwipper extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: size.height * 0.40,
+      height: size.height * 0.45,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -202,7 +202,7 @@ class CardDetail extends StatelessWidget {
           Text(
             'Mollit ad labore commodo laborum.Mollit ad labore commodo laborum. Mollit ad labore commodo laborum. Veniam irure ad deserunt officia. Voluptate Lorem occaecat commodo ea magna reprehenderit dolore cupidatat ea est do. Mollit ad labore commodo laborum. Veniam irure ad deserunt officia. Voluptate Lorem occaecat commodo ea magna reprehenderit dolore cupidatat ea est do.',
             textAlign: TextAlign.justify,
-            maxLines: 6,
+            maxLines: 5,
             overflow: TextOverflow.ellipsis,
           ),
         ],
