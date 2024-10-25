@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide_2024/widgets/create_container.dart';
+import 'package:flutter_guide_2024/widgets/drawer_menu.dart';
 
 class StackScreen extends StatelessWidget {
   const StackScreen({super.key});
@@ -7,6 +8,7 @@ class StackScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerMenu(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -21,7 +23,7 @@ class StackScreen extends StatelessWidget {
                 CreateContainer(
                   width: double.infinity,
                   height: 200,
-                  cajaColor: Colors.amber,
+                  cajaColor: Colors.green,
                 ),
                 const CircleAvatar(
                   radius: 90,
@@ -32,7 +34,7 @@ class StackScreen extends StatelessWidget {
                 ),
                 Positioned(
                   top: 0,
-                  right: 0,
+                  left: 0,
                   child: Container(
                     width: 100,
                     height: 50,
