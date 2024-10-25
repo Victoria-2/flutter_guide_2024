@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_guide_2024/widgets/drawer_menu.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,25 +12,11 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home Screen'),
         centerTitle: true,
-        leading: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text('123'),
-        ),
         leadingWidth: 40,
         toolbarHeight: 80,
         backgroundColor: Colors.green,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-              child: const Icon(Icons.add),
-              onTap: () {
-                log('tap menu');
-              },
-            ),
-          ),
-        ],
       ),
+      drawer: DrawerMenu(),
       body: const Center(child: Text('Hola mundo')),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.green,

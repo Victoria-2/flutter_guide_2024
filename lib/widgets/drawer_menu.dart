@@ -22,6 +22,8 @@ class DrawerMenu extends StatelessWidget {
     {'route': 'alert', 'title': 'Alertas', 'subtitle': ''},
     {'route': 'stack', 'title': 'Stack', 'subtitle': ''},
     {'route': 'infinite_scroll', 'title': 'Scroll Infinito', 'subtitle': ''},
+    {'route': 'custom_list', 'title': 'Custom list', 'subtitle': ''},
+    {'route': 'material_library', 'title': 'Material Library', 'subtitle': ''},
   ];
 
   DrawerMenu({super.key});

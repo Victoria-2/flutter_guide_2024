@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'animated_container',
+        initialRoute: 'home',
         routes: {
           'home': (context) => const HomeScreen(),
           'design': (context) => const DesignScreen(),
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
           'alert': (context) => const AlertScreen(),
           'animated_container': (context) => const AnimatedContainerScreen(),
           'infinite_scroll': (context) => const InfiniteScrollScreen(),
+          'custom_list': (context) => CustomListScreen()
         }
         /* home: DesignScreen(), */
         );
