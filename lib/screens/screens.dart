@@ -1,3 +1,5 @@
+export 'package:flutter_guide_2024/screens/material_screen.dart';
+
 export 'package:flutter_guide_2024/screens/infinite_scroll_screen.dart';
 
 export 'package:flutter_guide_2024/screens/alert_screen.dart';

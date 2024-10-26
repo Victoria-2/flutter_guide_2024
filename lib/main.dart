@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guide_2024/screens/material_screen.dart';
 import 'package:flutter_guide_2024/screens/screens.dart';
 
 void main() {
@@ -14,6 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: 'home',
+        theme: ThemeData.dark()
+            .copyWith(appBarTheme: AppBarTheme(color: Colors.amber)),
         routes: {
           'home': (context) => const HomeScreen(),
           'design': (context) => const DesignScreen(),
