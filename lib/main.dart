@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide_2024/screens/material_screen.dart';
 import 'package:flutter_guide_2024/screens/screens.dart';
+import 'package:flutter_guide_2024/screens/social_media_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,10 +26,14 @@ class MyApp extends StatelessWidget {
           'flexbox': (context) => const FlexboxScreen(),
           'swipper_card': (context) => const SwipperScreen(),
           'stack': (context) => const StackScreen(),
+<<<<<<< Updated upstream
           'alert': (context) => const AlertScreen(),
           'animated_container': (context) => const AnimatedContainerScreen(),
           'infinite_scroll': (context) => const InfiniteScrollScreen(),
           'custom_list': (context) => CustomListScreen()
+=======
+          'social_media_screen': (context) => const SocialMediaScreen(),
+>>>>>>> Stashed changes
         }
         /* home: DesignScreen(), */
         );
