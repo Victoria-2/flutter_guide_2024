@@ -1,3 +1,7 @@
+export 'package:flutter_guide_2024/screens/profile_screen.dart';
+
+export 'package:flutter_guide_2024/screens/provider_screen.dart';
+
 export 'package:flutter_guide_2024/screens/material_screen.dart';
 
 export 'package:flutter_guide_2024/screens/infinite_scroll_screen.dart';

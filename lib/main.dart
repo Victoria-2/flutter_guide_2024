@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_guide_2024/helpers/preferences.dart';
 import 'package:flutter_guide_2024/screens/screens.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Preferences.initShared();
+
   runApp(const MyApp());
 }
 
@@ -13,8 +17,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: 'home',
-        theme: ThemeData.dark()
-            .copyWith(appBarTheme: AppBarTheme(color: Colors.amber)),
         routes: {
           'home': (context) => const HomeScreen(),
           'design': (context) => const DesignScreen(),
@@ -29,7 +31,9 @@ class MyApp extends StatelessWidget {
           'alert': (context) => const AlertScreen(),
           'animated_container': (context) => const AnimatedContainerScreen(),
           'infinite_scroll': (context) => const InfiniteScrollScreen(),
-          'custom_list': (context) => CustomListScreen()
+          'custom_list': (context) => CustomListScreen(),
+          'provider_navigation_bar': (context) => DemoProviderScreen(),
+          'profile': (context) => ProfileScreen(),
         }
         /* home: DesignScreen(), */
         );
