@@ -2,7 +2,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Preferences {
   static bool _darkmode = false;
-
   static late SharedPreferences _prefs;
 
   static Future<void> initShared() async {

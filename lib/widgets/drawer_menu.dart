@@ -28,7 +28,12 @@ class DrawerMenu extends StatelessWidget {
     {
       'route': 'provider_navigation_bar',
       'title': 'Bottom Navigation',
-      'subtitle': 'Provider demo'
+      'subtitle': 'Manejo con SetState'
+    },
+    {
+      'route': 'provider_navigation_bar_provider',
+      'title': 'Bottom Navigation',
+      'subtitle': '(Provider demo)'
     },
   ];
 

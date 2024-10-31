@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: 'home',
+        theme: Preferences.darkmode ? ThemeData.dark() : ThemeData.light(),
         routes: {
           'home': (context) => const HomeScreen(),
           'design': (context) => const DesignScreen(),
@@ -32,7 +33,9 @@ class MyApp extends StatelessWidget {
           'animated_container': (context) => const AnimatedContainerScreen(),
           'infinite_scroll': (context) => const InfiniteScrollScreen(),
           'custom_list': (context) => CustomListScreen(),
-          'provider_navigation_bar': (context) => DemoProviderScreen(),
+          'provider_navigation_bar': (context) => BottomNavigationScreen(),
+          'provider_navigation_bar_provider': (context) =>
+              BottomNavigationProvider(),
           'profile': (context) => ProfileScreen(),
         }
         /* home: DesignScreen(), */

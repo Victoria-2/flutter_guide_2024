@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DemoProviderScreen extends StatelessWidget {
-  const DemoProviderScreen({super.key});
+class BottomNavigationScreen extends StatelessWidget {
+  BottomNavigationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,33 +12,33 @@ class DemoProviderScreen extends StatelessWidget {
         elevation: 10,
         toolbarHeight: 80,
       ),
-      bottomNavigationBar: const ControlNavigation(),
+      bottomNavigationBar: ElementsButtonWidget(),
       body: const ElementsBody(),
     );
   }
 }
 
-class ControlNavigation extends StatefulWidget {
-  const ControlNavigation({super.key});
+class ElementsButtonWidget extends StatefulWidget {
+  ElementsButtonWidget({
+    super.key,
+  });
 
   @override
-  State<ControlNavigation> createState() => _ControlNavigationState();
+  State<ElementsButtonWidget> createState() => _ElementsButtonWidgetState();
 }
 
-class _ControlNavigationState extends State<ControlNavigation> {
+class _ElementsButtonWidgetState extends State<ElementsButtonWidget> {
   int _paginaActual = 0;
 
   @override
   Widget build(BuildContext context) {
-    /* final page = Provider.of<_handlerPage>(context, listen: true); */
-
     return BottomNavigationBar(
         currentIndex: _paginaActual,
         elevation: 10,
         unselectedItemColor: Colors.grey,
         onTap: (value) {
+          print('value: $value');
           setState(() {
-            print('value: $value');
             _paginaActual = value;
           });
         },
