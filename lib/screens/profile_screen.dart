@@ -54,8 +54,53 @@ class _BodyProfileState extends State<BodyProfile> {
             setState(() {});
           },
         ),
+        TextFormField(
+            onChanged: (value) {},
+            style: TextStyle(fontSize: 18),
+            initialValue: '',
+            keyboardType: TextInputType.phone,
+            decoration: decorationInput(
+                label: 'Telefono',
+                icon: Icons.phone,
+                helperText: 'Ingresar número sin 0 ni 15')),
+        TextFormField(
+            onChanged: (value) {},
+            style: TextStyle(fontSize: 18),
+            initialValue: '',
+            keyboardType: TextInputType.emailAddress,
+            decoration: decorationInput(
+                label: 'Email', icon: Icons.alternate_email_outlined)),
+        TextFormField(
+            onChanged: (value) {},
+            style: TextStyle(fontSize: 18),
+            initialValue: '',
+            keyboardType: TextInputType.text,
+            decoration: decorationInput(label: 'Apellido')),
+        TextFormField(
+            onChanged: (value) {},
+            style: TextStyle(fontSize: 18),
+            initialValue: '',
+            keyboardType: TextInputType.text,
+            decoration: decorationInput(label: 'Nombre'))
       ],
     );
+  }
+
+  InputDecoration decorationInput(
+      {IconData? icon, String? hintText, String? helperText, String? label}) {
+    return InputDecoration(
+        fillColor: Colors.black,
+        label: Text(label ?? ''),
+        hintText: hintText,
+        helperText: helperText,
+        helperStyle: const TextStyle(fontSize: 16),
+        prefixIcon: (icon != null) ? Icon(icon) : null,
+        border: const UnderlineInputBorder(
+            borderSide: BorderSide(width: 1, color: Colors.red)),
+        focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(width: 3, color: Colors.blue)),
+        enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(width: 2, color: Colors.green)));
   }
 }
 
