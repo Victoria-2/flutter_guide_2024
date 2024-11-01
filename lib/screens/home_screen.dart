@@ -14,12 +14,10 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         leadingWidth: 40,
         toolbarHeight: 80,
-        backgroundColor: Colors.green,
       ),
       drawer: DrawerMenu(),
       body: const Center(child: Text('Hola mundo')),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
         child: const Icon(Icons.plus_one),
         onPressed: () {
           log('click button');

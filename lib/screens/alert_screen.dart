@@ -52,12 +52,12 @@ class AlertScreen extends StatelessWidget {
             ),
             /* actionsAlignment: MainAxisAlignment.spaceBetween, */
             actions: [
-              ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Cancelar')),
               TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Ok')),
+                  child: const Text('Cancelar')),
+              ElevatedButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Aceptar')),
             ],
           );
         });

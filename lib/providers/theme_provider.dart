@@ -5,11 +5,12 @@ class ThemeProvider extends ChangeNotifier {
   ThemeData temaActual;
 
   ThemeProvider({required bool isDarkMode})
-      : temaActual = (isDarkMode) ? ThemeData.dark() : ThemeData.light();
+      : temaActual =
+            (isDarkMode) ? DefaultTheme.darkTheme : DefaultTheme.lightTheme;
 
   setLight() {
     print('setLight');
-    temaActual = DefaultTheme.defaultTheme;
+    temaActual = DefaultTheme.lightTheme;
     notifyListeners();
   }
 
