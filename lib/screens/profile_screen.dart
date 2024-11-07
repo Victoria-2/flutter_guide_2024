@@ -59,7 +59,7 @@ class BodyProfile extends StatelessWidget {
             onChanged: (value) {
               Preferences.telefono = value;
             },
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: Preferences.telefono,
             keyboardType: TextInputType.phone,
             decoration: decorationInput(
@@ -73,7 +73,7 @@ class BodyProfile extends StatelessWidget {
             onChanged: (value) {
               Preferences.email = value;
             },
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: Preferences.email,
             keyboardType: TextInputType.emailAddress,
             decoration: decorationInput(
@@ -85,7 +85,7 @@ class BodyProfile extends StatelessWidget {
             onChanged: (value) {
               Preferences.apellido = value;
             },
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: Preferences.apellido,
             keyboardType: TextInputType.text,
             decoration: decorationInput(label: 'Apellido')),
@@ -96,7 +96,7 @@ class BodyProfile extends StatelessWidget {
             onChanged: (value) {
               Preferences.nombre = value;
             },
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: Preferences.nombre,
             keyboardType: TextInputType.text,
             decoration: decorationInput(label: 'Nombre'))

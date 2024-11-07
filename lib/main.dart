@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guide_2024/helpers/preferences.dart';
+import 'package:flutter_guide_2024/providers/people_provider.dart';
 import 'package:flutter_guide_2024/providers/theme_provider.dart';
 import 'package:flutter_guide_2024/screens/screens.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,10 @@ void main() async {
       ChangeNotifierProvider<ThemeProvider>(
         create: (_) => ThemeProvider(isDarkMode: Preferences.darkmode),
       ),
+      ChangeNotifierProvider<PeopleProvider>(
+        create: (_) => PeopleProvider(),
+        lazy: false,
+      )
     ],
     child: const MyApp(),
   ));
@@ -49,6 +54,7 @@ class MyApp extends StatelessWidget {
               BottomNavigationProvider(),
           'profile': (context) => ProfileScreen(),
           'custom_list_item': (context) => CustomListItem(),
+          'list_people': (context) => ListPeopleScreen(),
         }
         /* home: DesignScreen(), */
         );

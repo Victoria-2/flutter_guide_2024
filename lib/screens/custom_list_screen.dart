@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:flutter_guide_2024/mocks/people_mock.dart' show elements;
 import 'package:flutter/material.dart';
-import 'package:flutter_guide_2024/searchs/search_demo.dart';
 
 class CustomListScreen extends StatefulWidget {
   CustomListScreen({super.key});
@@ -11,7 +10,7 @@ class CustomListScreen extends StatefulWidget {
 }
 
 class _CustomListScreenState extends State<CustomListScreen> {
-  List _auxiliar_elements = [];
+  List _auxiliarElements = [];
   String _searchQuery = '';
   bool _searchActive = false;
 
@@ -21,7 +20,7 @@ class _CustomListScreenState extends State<CustomListScreen> {
   @override
   void initState() {
     super.initState();
-    _auxiliar_elements = elements;
+    _auxiliarElements = elements;
   }
 
   @override
@@ -36,9 +35,9 @@ class _CustomListScreenState extends State<CustomListScreen> {
     setState(() {
       _searchQuery = query ?? '';
       if (_searchQuery.isEmpty) {
-        _auxiliar_elements = elements; // Restablecer al estado original
+        _auxiliarElements = elements; // Restablecer al estado original
       } else {
-        _auxiliar_elements = elements.where((element) {
+        _auxiliarElements = elements.where((element) {
           return element[1].toLowerCase().contains(_searchQuery.toLowerCase());
         }).toList();
       }
@@ -51,17 +50,17 @@ class _CustomListScreenState extends State<CustomListScreen> {
       top: true,
       child: Scaffold(
           body: Column(children: [
-        SearchArea(),
-        ListItemsArea(),
+        searchArea(),
+        listItemsArea(),
       ])),
     );
   }
 
-  Expanded ListItemsArea() {
+  Expanded listItemsArea() {
     return Expanded(
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        itemCount: _auxiliar_elements.length,
+        itemCount: _auxiliarElements.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
@@ -95,7 +94,7 @@ class _CustomListScreenState extends State<CustomListScreen> {
               child: Row(
                 children: [
                   Image.asset(
-                      'assets/avatars/${_auxiliar_elements[index][0]}.png',
+                      'assets/avatars/${_auxiliarElements[index][0]}.png',
                       width: 50,
                       height: 50),
                   const SizedBox(
@@ -107,18 +106,18 @@ class _CustomListScreenState extends State<CustomListScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          _auxiliar_elements[index][1],
+                          _auxiliarElements[index][1],
                           style: const TextStyle(
                               fontSize: 17, fontWeight: FontWeight.bold),
                         ),
-                        Text(_auxiliar_elements[index][2]),
+                        Text(_auxiliarElements[index][2]),
                       ],
                     ),
                   ),
-                  Icon(_auxiliar_elements[index][4]
+                  Icon(_auxiliarElements[index][4]
                       ? Icons.star
                       : Icons.star_border_outlined),
-                  Text(_auxiliar_elements[index][3].toString())
+                  Text(_auxiliarElements[index][3].toString())
                 ],
               ),
             ),
@@ -128,11 +127,11 @@ class _CustomListScreenState extends State<CustomListScreen> {
     );
   }
 
-  AnimatedSwitcher SearchArea() {
+  AnimatedSwitcher searchArea() {
     return AnimatedSwitcher(
       switchInCurve: Curves.bounceIn,
       switchOutCurve: Curves.bounceOut,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       child: (_searchActive)
           ? Padding(
               padding: const EdgeInsets.all(8.0),
@@ -148,7 +147,7 @@ class _CustomListScreenState extends State<CustomListScreen> {
                       onFieldSubmitted: (value) {
                         _updateSearch(value);
                       },
-                      decoration: InputDecoration(hintText: 'Buscar...'),
+                      decoration: const InputDecoration(hintText: 'Buscar...'),
                     ),
                   ),
                   IconButton(
@@ -157,7 +156,7 @@ class _CustomListScreenState extends State<CustomListScreen> {
                       FocusManager.instance.primaryFocus?.unfocus();
                       _updateSearch('');
                     },
-                    icon: Icon(Icons.clear),
+                    icon: const Icon(Icons.clear),
                   ),
                   IconButton(
                     onPressed: () {
@@ -165,13 +164,13 @@ class _CustomListScreenState extends State<CustomListScreen> {
                         _searchActive = false;
                       });
                     },
-                    icon: Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back),
                   ),
                 ],
               ),
             )
           : Container(
-              padding: EdgeInsets.all(2),
+              padding: const EdgeInsets.all(2),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -179,7 +178,7 @@ class _CustomListScreenState extends State<CustomListScreen> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.keyboard_arrow_left_outlined)),
+                      icon: const Icon(Icons.keyboard_arrow_left_outlined)),
                   IconButton(
                       onPressed: () {
                         setState(() {
@@ -187,7 +186,7 @@ class _CustomListScreenState extends State<CustomListScreen> {
                         });
                         _focusNode.requestFocus();
                       },
-                      icon: Icon(Icons.search)),
+                      icon: const Icon(Icons.search)),
                 ],
               ),
             ),

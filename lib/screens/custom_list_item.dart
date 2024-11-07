@@ -62,7 +62,7 @@ class BodyProfileCustomItem extends StatelessWidget {
         ),
         TextFormField(
             onChanged: (value) {},
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: args['cargo'] ?? '',
             decoration: decorationInput(
                 label: 'Cargo', helperText: 'Ingresar número sin 0 ni 15')),
@@ -71,7 +71,7 @@ class BodyProfileCustomItem extends StatelessWidget {
         ),
         TextFormField(
             onChanged: (value) {},
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: args['name'] ?? '',
             keyboardType: TextInputType.text,
             decoration: decorationInput(label: 'Nombre y Apellido')),
@@ -80,7 +80,7 @@ class BodyProfileCustomItem extends StatelessWidget {
         ),
         TextFormField(
             onChanged: (value) {},
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: args['stars'].toString(),
             keyboardType: TextInputType.text,
             decoration: decorationInput(label: 'Stars')),
