@@ -35,6 +35,11 @@ class DrawerMenu extends StatelessWidget {
       'title': 'Bottom Navigation',
       'subtitle': '(Provider demo)'
     },
+    {
+      'route': 'list_people',
+      'title': 'Lista Mock Api',
+      'subtitle': '(Provider)'
+    },
   ];
 
   DrawerMenu({super.key});

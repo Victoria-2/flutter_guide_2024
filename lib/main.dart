@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_guide_2024/helpers/preferences.dart';
 import 'package:flutter_guide_2024/providers/people_provider.dart';
 import 'package:flutter_guide_2024/providers/theme_provider.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Preferences.initShared();
+  await dotenv.load();
 
   runApp(MultiProvider(
     providers: [
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
     final tema = Provider.of<ThemeProvider>(context, listen: true);
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'home',
+        initialRoute: 'lista_fotos',
         /* theme: Preferences.darkmode ? ThemeData.dark() : ThemeData.light(), */
         theme: tema.temaActual,
         routes: {
@@ -55,6 +57,8 @@ class MyApp extends StatelessWidget {
           'profile': (context) => ProfileScreen(),
           'custom_list_item': (context) => CustomListItem(),
           'list_people': (context) => ListPeopleScreen(),
+          'demo_future': (context) => FutureDemoScreen(),
+          'lista_fotos': (context) => ListaFotosScreen(),
         }
         /* home: DesignScreen(), */
         );
