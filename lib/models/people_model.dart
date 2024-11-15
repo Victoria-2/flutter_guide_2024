@@ -3,6 +3,10 @@ class People {
   String firstname;
   String lastname;
   String email;
+  String url;
+  String city;
+  String country;
+  String company;
   String id;
 
   People({
@@ -10,6 +14,10 @@ class People {
     required this.firstname,
     required this.lastname,
     required this.email,
+    required this.url,
+    required this.city,
+    required this.country,
+    required this.company,
     required this.id,
   });
 
@@ -18,6 +26,10 @@ class People {
         firstname: json["firstname"],
         lastname: json["lastname"],
         email: json["email"],
+        url: json["url"],
+        city: json["city"],
+        country: json["country"],
+        company: json["company"],
         id: json["id"],
       );
 
@@ -26,6 +38,10 @@ class People {
         "firstname": firstname,
         "lastname": lastname,
         "email": email,
+        "url": url,
+        "city": city,
+        "country": country,
+        "company": company,
         "id": id,
       };
 }
