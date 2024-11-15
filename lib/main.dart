@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     final tema = Provider.of<ThemeProvider>(context, listen: true);
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'home',
+        initialRoute: 'swipper_card',
         /* theme: Preferences.darkmode ? ThemeData.dark() : ThemeData.light(), */
         theme: tema.temaActual,
         routes: {
