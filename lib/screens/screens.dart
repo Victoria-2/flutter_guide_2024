@@ -1,7 +1,8 @@
+export 'package:flutter_guide_2024/screens/sliver_screen.dart';
+
+export 'package:flutter_guide_2024/screens/pageview_screen.dart';
+
 export 'package:flutter_guide_2024/screens/lista_fotos.dart';
-
-export 'package:flutter_guide_2024/screens/demo_future.dart';
-
 export 'package:flutter_guide_2024/screens/list_people.dart';
 export 'package:flutter_guide_2024/screens/custom_list_item.dart';
 export 'package:flutter_guide_2024/screens/bottom_navigation_screen.dart';

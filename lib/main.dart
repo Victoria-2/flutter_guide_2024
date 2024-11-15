@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     final tema = Provider.of<ThemeProvider>(context, listen: true);
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'lista_fotos',
+        initialRoute: 'home',
         /* theme: Preferences.darkmode ? ThemeData.dark() : ThemeData.light(), */
         theme: tema.temaActual,
         routes: {
@@ -54,11 +54,12 @@ class MyApp extends StatelessWidget {
           'provider_navigation_bar': (context) => BottomNavigationScreen(),
           'provider_navigation_bar_provider': (context) =>
               BottomNavigationProvider(),
-          'profile': (context) => ProfileScreen(),
+          'profile': (context) => const ProfileScreen(),
           'custom_list_item': (context) => CustomListItem(),
-          'list_people': (context) => ListPeopleScreen(),
-          'demo_future': (context) => FutureDemoScreen(),
-          'lista_fotos': (context) => ListaFotosScreen(),
+          'list_people': (context) => const ListPeopleScreen(),
+          'lista_fotos': (context) => const ListaFotosScreen(),
+          'page_view': (context) => PageViewScreen(),
+          'sliver': (context) => const SliversScreen(),
         }
         /* home: DesignScreen(), */
         );

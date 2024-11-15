@@ -40,6 +40,9 @@ class DrawerMenu extends StatelessWidget {
       'title': 'Lista Mock Api',
       'subtitle': '(Provider)'
     },
+    {'route': 'page_view', 'title': 'Page View', 'subtitle': ''},
+    {'route': 'sliver', 'title': 'Sliver Page', 'subtitle': ''},
+    {'route': 'lista_fotos', 'title': 'Lista Fotos', 'subtitle': ''},
   ];
 
   DrawerMenu({super.key});
