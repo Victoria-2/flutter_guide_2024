@@ -7,6 +7,7 @@ class People {
   String city;
   String country;
   String company;
+  String image;
   String id;
 
   People({
@@ -18,6 +19,7 @@ class People {
     required this.city,
     required this.country,
     required this.company,
+    required this.image,
     required this.id,
   });
 
@@ -30,6 +32,7 @@ class People {
         city: json["city"],
         country: json["country"],
         company: json["company"],
+        image: json["image"],
         id: json["id"],
       );
 
@@ -42,6 +45,7 @@ class People {
         "city": city,
         "country": country,
         "company": company,
+        "image": image,
         "id": id,
       };
 }
