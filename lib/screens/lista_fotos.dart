@@ -25,34 +25,55 @@ class BodyListaFotos extends StatefulWidget {
 
 class _BodyListaFotosState extends State<BodyListaFotos> {
   late Future<List<Photos>> listaFotos;
+  int currentPage = 1;
+  final ScrollController scrollController = ScrollController();
+  bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
-    listaFotos = FotosFuture.getPhotos();
+    listaFotos = FotosFuture.getPhotos(currentPage);
+    scrollController.addListener(() {
+      print(scrollController.position.pixels);
+      print(scrollController.position.maxScrollExtent);
+      if (scrollController.position.pixels >=
+          scrollController.position.maxScrollExtent) {}
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: listaFotos,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: snapshot.data!.length,
-            itemBuilder: (context, index) {
-              /* return Image.network(snapshot.data![index].urls.regular); */
-              return FadeInImage(
-                  placeholder: AssetImage('assets/loading.gif'),
-                  image: NetworkImage(snapshot.data![index].urls.regular));
-            },
-          );
-        } else if (snapshot.hasError) {
-          return Center(child: Text(snapshot.error.toString()));
-        }
-        return Center(child: const CircularProgressIndicator());
+    return RefreshIndicator(
+      onRefresh: () async {
+        print('refresh');
+        setState(() {
+          print(currentPage);
+          currentPage = currentPage + 1;
+          listaFotos = FotosFuture.getPhotos(currentPage);
+        });
       },
+      child: FutureBuilder(
+        future: listaFotos,
+        builder: (context, snapshot) {
+          print(snapshot);
+          if (snapshot.hasData) {
+            return ListView.builder(
+              controller: scrollController,
+              physics: BouncingScrollPhysics(),
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                /* return Image.network(snapshot.data![index].urls.regular); */
+                return FadeInImage(
+                    placeholder: AssetImage('assets/loading.gif'),
+                    image: NetworkImage(snapshot.data![index].urls.regular));
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Center(child: Text(snapshot.error.toString()));
+          }
+          return Center(child: const CircularProgressIndicator());
+        },
+      ),
     );
   }
 }
