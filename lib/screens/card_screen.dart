@@ -3,11 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class CardScreen extends StatelessWidget {
-  String url;
-  String title;
-  String? body;
+  final String url;
+  final String title;
+  final String? body;
 
-  CardScreen({super.key, required this.url, required this.title, this.body});
+  const CardScreen(
+      {super.key, required this.url, required this.title, this.body});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class CardScreen extends StatelessWidget {
                 onPressed: () {
                   log('click cancelar');
                 },
-                child: Text('Cancelar')),
+                child: const Text('Cancelar')),
             const SizedBox(
               width: 15,
             ),
@@ -57,7 +58,7 @@ class CardScreen extends StatelessWidget {
                 onPressed: () {
                   log('click aceptar');
                 },
-                child: Text('Aceptar')),
+                child: const Text('Aceptar')),
             const SizedBox(
               width: 15,
             ),

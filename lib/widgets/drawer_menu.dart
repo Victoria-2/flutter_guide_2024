@@ -24,6 +24,25 @@ class DrawerMenu extends StatelessWidget {
     {'route': 'infinite_scroll', 'title': 'Scroll Infinito', 'subtitle': ''},
     {'route': 'custom_list', 'title': 'Custom list', 'subtitle': ''},
     {'route': 'material_library', 'title': 'Material Library', 'subtitle': ''},
+    {'route': 'profile', 'title': 'Perfil usuario', 'subtitle': ''},
+    {
+      'route': 'provider_navigation_bar',
+      'title': 'Bottom Navigation',
+      'subtitle': 'Manejo con SetState'
+    },
+    {
+      'route': 'provider_navigation_bar_provider',
+      'title': 'Bottom Navigation',
+      'subtitle': '(Provider demo)'
+    },
+    {
+      'route': 'list_people',
+      'title': 'Lista Mock Api',
+      'subtitle': '(Provider)'
+    },
+    {'route': 'page_view', 'title': 'Page View', 'subtitle': ''},
+    {'route': 'sliver', 'title': 'Sliver Page', 'subtitle': ''},
+    {'route': 'lista_fotos', 'title': 'Lista Fotos', 'subtitle': ''},
   ];
 
   DrawerMenu({super.key});

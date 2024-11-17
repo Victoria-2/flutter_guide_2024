@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_guide_2024/searchs/search_demo.dart';
 
 class ListViewBuilderScreen extends StatelessWidget {
   const ListViewBuilderScreen({super.key});
@@ -9,11 +10,17 @@ class ListViewBuilderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ListView Builder Screen'),
+        title: Text('ListView Builder + Search'),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () =>
+                  showSearch(context: context, delegate: SearchDemo()))
+        ],
       ),
       body: Center(
         child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           itemCount: 100,
           itemBuilder: (BuildContext context, int index) {
             log('posicion $index');

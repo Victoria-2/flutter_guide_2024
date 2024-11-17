@@ -1,36 +1,78 @@
 import 'dart:developer';
-
+import 'package:flutter_guide_2024/mocks/people_mock.dart' show elements;
 import 'package:flutter/material.dart';
 
-class CustomListScreen extends StatelessWidget {
-  final List _elements = [
-    ['avatar1', 'Juan Pablo Segundo', 'Ingeniero', 42, true],
-    ['avatar2', 'Pedro Perez', 'Arquitecto', 23, true],
-    ['avatar3', 'Mariano Moreno', 'Director', 44, true],
-    ['avatar4', 'Cristian Diaz', 'Limpieza', 2, false],
-    ['avatar5', 'Max Power', 'Técnico', 2, false],
-    ['avatar6', 'Emilio Gonzalez', 'Operador', 1, false],
-    ['avatar7', 'Ana Valente', 'Soldador', 4, false],
-    ['avatar8', 'Maria Sanz', 'Sistemas', 4, false],
-    ['avatar9', 'Sebastian Gañan', 'Sistemas', 52, false],
-    ['avatar10', 'Nando Fernandez', 'Operador', 6, false],
-    ['avatar11', 'Carla Massei', 'Jefe', 7, false],
-    ['avatar12', 'Lara Tomasso', 'Jefe', 21, false],
-    ['avatar13', 'Carlos Schwindt', 'Limpieza', 9, false],
-  ];
-
+class CustomListScreen extends StatefulWidget {
   CustomListScreen({super.key});
 
   @override
+  State<CustomListScreen> createState() => _CustomListScreenState();
+}
+
+class _CustomListScreenState extends State<CustomListScreen> {
+  List _auxiliarElements = [];
+  String _searchQuery = '';
+  bool _searchActive = false;
+
+  final TextEditingController _searchController = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _auxiliarElements = elements;
+  }
+
+  @override
+  void dispose() {
+    // Limpiar el controlador al destruir el widget
+    _searchController.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _updateSearch(String? query) {
+    setState(() {
+      _searchQuery = query ?? '';
+      if (_searchQuery.isEmpty) {
+        _auxiliarElements = elements; // Restablecer al estado original
+      } else {
+        _auxiliarElements = elements.where((element) {
+          return element[1].toLowerCase().contains(_searchQuery.toLowerCase());
+        }).toList();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
+    return SafeArea(
+      top: true,
+      child: Scaffold(
+          body: Column(children: [
+        searchArea(),
+        listItemsArea(),
+      ])),
+    );
+  }
+
+  Expanded listItemsArea() {
+    return Expanded(
+      child: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        itemCount: _elements.length,
+        itemCount: _auxiliarElements.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              log('onTap $index');
+              Navigator.pushNamed(context, 'custom_list_item',
+                  arguments: <String, dynamic>{
+                    'avatar': elements[index][0],
+                    'name': elements[index][1],
+                    'cargo': elements[index][2],
+                    'stars': elements[index][3],
+                    'favorite': elements[index][4],
+                  });
+              FocusManager.instance.primaryFocus?.unfocus();
             },
             onLongPress: () {
               log('onLongPress $index');
@@ -51,8 +93,10 @@ class CustomListScreen extends StatelessWidget {
                   ]),
               child: Row(
                 children: [
-                  Image.asset('assets/avatars/${_elements[index][0]}.png',
-                      width: 50, height: 50),
+                  Image.asset(
+                      'assets/avatars/${_auxiliarElements[index][0]}.png',
+                      width: 50,
+                      height: 50),
                   const SizedBox(
                     width: 10,
                   ),
@@ -62,24 +106,90 @@ class CustomListScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          _elements[index][1],
+                          _auxiliarElements[index][1],
                           style: const TextStyle(
                               fontSize: 17, fontWeight: FontWeight.bold),
                         ),
-                        Text(_elements[index][2]),
+                        Text(_auxiliarElements[index][2]),
                       ],
                     ),
                   ),
-                  Icon(_elements[index][4]
-                      ? Icons.star_border_outlined
-                      : Icons.star),
-                  Text(_elements[index][3].toString())
+                  Icon(_auxiliarElements[index][4]
+                      ? Icons.star
+                      : Icons.star_border_outlined),
+                  Text(_auxiliarElements[index][3].toString())
                 ],
               ),
             ),
           );
         },
       ),
+    );
+  }
+
+  AnimatedSwitcher searchArea() {
+    return AnimatedSwitcher(
+      switchInCurve: Curves.bounceIn,
+      switchOutCurve: Curves.bounceOut,
+      duration: const Duration(milliseconds: 300),
+      child: (_searchActive)
+          ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      controller: _searchController,
+                      focusNode: _focusNode,
+                      onChanged: (value) {
+                        _updateSearch(value);
+                      },
+                      onFieldSubmitted: (value) {
+                        _updateSearch(value);
+                      },
+                      decoration: const InputDecoration(hintText: 'Buscar...'),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      _searchController.clear();
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      _updateSearch('');
+                    },
+                    icon: const Icon(Icons.clear),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _searchActive = false;
+                      });
+                    },
+                    icon: const Icon(Icons.arrow_back),
+                  ),
+                ],
+              ),
+            )
+          : Container(
+              padding: const EdgeInsets.all(2),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.keyboard_arrow_left_outlined)),
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _searchActive = !_searchActive;
+                        });
+                        _focusNode.requestFocus();
+                      },
+                      icon: const Icon(Icons.search)),
+                ],
+              ),
+            ),
     );
   }
 }
