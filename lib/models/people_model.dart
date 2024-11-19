@@ -5,7 +5,7 @@ class People {
   String email;
   String url;
   String city;
-  String country;
+  String? country;
   String company;
   String image;
   String id;
@@ -17,7 +17,7 @@ class People {
     required this.email,
     required this.url,
     required this.city,
-    required this.country,
+    this.country,
     required this.company,
     required this.image,
     required this.id,
@@ -30,7 +30,7 @@ class People {
         email: json["email"],
         url: json["url"],
         city: json["city"],
-        country: json["country"],
+        country: json["country"] ?? '',
         company: json["company"],
         image: json["image"],
         id: json["id"],
