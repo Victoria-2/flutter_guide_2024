@@ -66,6 +66,7 @@ flutter:
   assets:
     - assets/loading.gif
     - assets/images/
+    - assets/images/placeholder.png
     - assets/avatars/   
     - .env
 

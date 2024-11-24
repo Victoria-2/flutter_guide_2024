@@ -4,33 +4,61 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guide_2024/mocks/staff_mock.dart' show castMovies;
 import 'package:flutter_guide_2024/models/people_model.dart';
 
-class CardHorizontalSwiper extends StatelessWidget {
+class CardHorizontalSwiper extends StatefulWidget {
   final Size size;
   String? title;
   Function verMas;
+  Function onNext;
   List<People> people = [];
 
   CardHorizontalSwiper({
     super.key,
     required this.size,
     required this.verMas,
+    required this.onNext,
     required this.people,
     this.title,
   });
 
   @override
+  State<CardHorizontalSwiper> createState() => _CardHorizontalSwiperState();
+}
+
+class _CardHorizontalSwiperState extends State<CardHorizontalSwiper> {
+  ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(() {
+      /* print(
+          'posACtual: ${scrollController.position.pixels} posTotal:${scrollController.position.maxScrollExtent}'); */
+      if (scrollController.position.pixels >=
+          scrollController.position.maxScrollExtent - 500) {
+        widget.onNext();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: size.height * 0.33,
+      height: widget.size.height * 0.40,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        if (title != null)
+        if (widget.title != null)
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(this.title!),
+                Text(this.widget.title!),
                 TextButton(
                     style: const ButtonStyle(
                       overlayColor: WidgetStatePropertyAll(
@@ -47,9 +75,10 @@ class CardHorizontalSwiper extends StatelessWidget {
           ),
         Expanded(
           child: ListView.builder(
+            controller: scrollController,
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            itemCount: people.length,
+            itemCount: widget.people.length,
             itemBuilder: (context, index) {
               return Container(
                 decoration: BoxDecoration(
@@ -78,7 +107,7 @@ class CardHorizontalSwiper extends StatelessWidget {
                           fit: BoxFit.cover,
                           placeholder:
                               const AssetImage('assets/images/loading.gif'),
-                          image: NetworkImage(people[index].image)),
+                          image: NetworkImage(widget.people[index].image)),
                     ),
                     const SizedBox(
                       height: 3,
@@ -86,7 +115,7 @@ class CardHorizontalSwiper extends StatelessWidget {
                     Text(
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                      '${people[index].firstname} ${people[index].lastname}',
+                      '${widget.people[index].firstname} ${widget.people[index].lastname}',
                       style: const TextStyle(
                           fontSize: 17, fontWeight: FontWeight.bold),
                     ),
@@ -95,7 +124,7 @@ class CardHorizontalSwiper extends StatelessWidget {
                     ),
                     Text(
                       textAlign: TextAlign.center,
-                      people[index].company,
+                      widget.people[index].company,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],

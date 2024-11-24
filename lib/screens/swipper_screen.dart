@@ -10,7 +10,7 @@ class SwipperScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider_people = Provider.of<PeopleProvider>(context);
+    final provider_people = Provider.of<PeopleProvider>(context, listen: true);
     final size = MediaQuery.of(context).size;
 
     log(' ${size.width} ${size.height}');
@@ -26,7 +26,15 @@ class SwipperScreen extends StatelessWidget {
               CardDetail(size: size),
               CardHorizontalSwiper(
                   size: size,
+                  title: 'Empleados',
                   people: provider_people.listPeople,
+                  onNext: () {
+                    if (provider_people.isLoading) {
+                      print('cargando... peticion abortada');
+                      return;
+                    }
+                    provider_people.getPeople();
+                  },
                   verMas: () {
                     print('Ver mas');
                   }),
