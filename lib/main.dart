@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_guide_2024/helpers/preferences.dart';
 import 'package:flutter_guide_2024/providers/people_provider.dart';
 import 'package:flutter_guide_2024/providers/theme_provider.dart';
+import 'package:flutter_guide_2024/screens/people_screen.dart';
 import 'package:flutter_guide_2024/screens/screens.dart';
 import 'package:provider/provider.dart';
 
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
           'lista_fotos': (context) => const ListaFotosScreen(),
           'page_view': (context) => PageViewScreen(),
           'sliver': (context) => const SliversScreen(),
+          'people_screen': (context) => const PeopleDetailScreen(),
         }
         /* home: DesignScreen(), */
         );
