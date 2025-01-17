@@ -1,5 +1,3 @@
-export 'package:flutter_guide_2024/screens/people_screen.dart';
-
 export 'package:flutter_guide_2024/screens/sliver_screen.dart';
 
 export 'package:flutter_guide_2024/screens/pageview_screen.dart';
